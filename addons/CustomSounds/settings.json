@@ -1,0 +1,148 @@
+{
+  "customSounds": [
+      {
+        "id": "IncomingCall",
+        "src": ""
+      },
+      {
+        "id": "IncomingCallAccept",
+        "src": ""
+      },
+      {
+        "id": "IncomingCallReject",
+        "src": ""
+      },
+      {
+        "id": "CallLeaveSelf",
+        "src": ""
+      },
+      {
+        "id": "OutgoingCall",
+        "src": ""
+      },
+      {
+        "id": "ReactionApply",
+        "src": ""
+      },
+      {
+        "id": "ReactionApplyKeyboardHide",
+        "src": ""
+      },
+      {
+        "id": "ReactionApplySheetHide",
+        "src": ""
+      },
+      {
+        "id": "ChatMessageSent",
+        "src": ""
+      },
+      {
+        "id": "VoiceJoinSelf",
+        "src": ""
+      },
+      {
+        "id": "VoiceLeaveSelf",
+        "src": ""
+      },
+      {
+        "id": "VoiceChannelSwitch",
+        "src": ""
+      },
+      {
+        "id": "VoiceMute",
+        "src": ""
+      },
+      {
+        "id": "VoiceUnmute",
+        "src": ""
+      },
+      {
+        "id": "VoiceDeafen",
+        "src": ""
+      },
+      {
+        "id": "VoiceUndeafen",
+        "src": ""
+      },
+      {
+        "id": "VoicePTTStarted",
+        "src": ""
+      },
+      {
+        "id": "VoicePTTStopped",
+        "src": ""
+      },
+      {
+        "id": "VoicePriorityStarted",
+        "src": ""
+      },
+      {
+        "id": "VoicePriorityStopped",
+        "src": ""
+      },
+      {
+        "id": "VoiceBroadcastStartedSelf",
+        "src": ""
+      },
+      {
+        "id": "VoiceBroadcastStoppedSelf",
+        "src": ""
+      },
+      {
+        "id": "VoiceWhisperStartedSelf",
+        "src": ""
+      },
+      {
+        "id": "VoiceWhisperStoppedSelf",
+        "src": ""
+      },
+      {
+        "id": "CallLeaveOther",
+        "src": ""
+      },
+      {
+        "id": "ReactionReceived",
+        "src": ""
+      },
+      {
+        "id": "ChatDMReceived",
+        "src": ""
+      },
+      {
+        "id": "ChatMentionReceived",
+        "src": ""
+      },
+      {
+        "id": "ChatMessageReceived",
+        "src": ""
+      },
+      {
+        "id": "ChatMessageTyping",
+        "src": ""
+      },
+      {
+        "id": "VoiceJoinOther",
+        "src": ""
+      },
+      {
+        "id": "VoiceLeaveOther",
+        "src": ""
+      },
+      {
+        "id": "VoiceBroadcastStartedOther",
+        "src": ""
+      },
+      {
+        "id": "VoiceBroadcastStoppedOther",
+        "src": ""
+      },
+      {
+        "id": "VoiceWhisperStartedOther",
+        "src": ""
+      },
+      {
+        "id": "VoiceWhisperStoppedOther",
+        "src": ""
+      }
+  ]
+}
