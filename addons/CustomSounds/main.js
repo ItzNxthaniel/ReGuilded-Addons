@@ -1,37 +1,44 @@
+const { join } = require("path");
+const { ReGuildedApi } = global;
+
 module.exports = {
-    id: "CustomSounds",
-    name: "Custom Sounds",
-    settings: require("./settings.json"),
+    settings: null,
 
     // DO NOT TOUCH
-    defaultSounds: [],
-    preinit(reGuilded, addonManager) {
-        console.log(this.name, "preinit.");
+    defaultSounds: {},
+    init() {
+        // Init Function
     },
-    init(reGuilded, addonManager, webpackManager) {
-        this.settings.customSounds.forEach((sound) => {
-            if (sound.id !== "" && sound.src !== "") {
-                var defaultSound = webpackManager.sounds.default[sound.id];
-                if (defaultSound != undefined) {
-                    this.defaultSounds.push({ "id": sound.id, "src": defaultSound.src });
-                    webpackManager.sounds.default[sound.id] = new defaultSound.constructor({ ...defaultSound, src: sound.src });
-                    console.log(`Replaced default sound "${sound.id}" with custom sound "${sound.src}"`);
+
+    load() {
+        delete require.cache[join(__dirname, "settings.json")]
+        this.settings = require("./settings.json");
+
+        for (const sound in this.settings) {
+            if (this.settings[sound] !== undefined && typeof this.settings[sound] == "string" && this.settings[sound] !== "") {
+                const defaultSound = ReGuildedApi.sounds[sound];
+                if (defaultSound !== undefined) {
+                    this.defaultSounds[sound] = defaultSound.src;
+
+                    ReGuildedApi.sounds[sound] = new defaultSound.constructor({ ...defaultSound, src: this.settings[sound]});
+                    console.log(`Replaced default sound "${sound}" with custom sound "${this.settings[sound]}"`);
                 }
             }
-        });
+        }
     },
-    uninit() {
-        let webpackManager = global.ReGuilded.webpackManager;
-        this.defaultSounds.forEach((sound) => {
-            if (sound.id !== "" && sound.src !== "") {
-                var defaultSound = webpackManager.sounds.default[sound.id];
-                if (defaultSound != undefined) {
-                    this.defaultSounds.push({ "id": sound.id, "src": defaultSound.src });
-                    webpackManager.sounds.default[sound.id] = new defaultSound.constructor({ ...defaultSound, src: sound.src });
-                    console.log(`Restored default sound "${sound.id}".`);
-                }
+
+    unload() {
+        for (const sound in this.defaultSounds) {
+            if (this.defaultSounds[sound] !== undefined) {
+                const defaultSound = ReGuildedApi.sounds[sound];
+
+                ReGuildedApi.sounds[sound] = new defaultSound.constructor({ ...defaultSound, src: this.defaultSounds[sound]});
+                delete this.defaultSounds[sound];
+
+                console.log(`Restored default sound "${sound}"`);
             }
-        });
-        console.log(this.name, "uninit.");
+        }
+
+        console.log("Custom Sound addon unload.");
     }
 }
