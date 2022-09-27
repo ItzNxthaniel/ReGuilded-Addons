@@ -2,7 +2,7 @@
 I use a settings.json in my addons to handle client settings.
 
 ### The Download:
-- Custom Sounds (id: customSounds) [[Click Here](https://downgit.github.io/#/home?url=https://github.com/ItzNxthaniel/ReGuilded-Addons/tree/main/addons/CustomSounds)]
+- Custom Sounds (id: customSounds) [[Click Here](https://downgit.github.io/#/home?url=https://github.com/ReGuilded/ReGuilded-Addons/tree/main/addons/CustomSounds)]
     - Customize your sounds you hear on Guilded. Just put a source file into the `settings.json`, relating to the sound you want to customize!
     
 ### The Installation:
