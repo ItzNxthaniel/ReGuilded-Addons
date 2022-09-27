@@ -1,5 +1,6 @@
-const { join } = require("path");
-const { ReGuildedApi } = global;
+const clientSounds = await ReGuilded.getApiProperty("guilded/app/sounds").default;
+
+if (!clientSounds) console.error("CustomSounds cannot work without clientSounds loaded.")
 
 module.exports = {
     settings: null,
@@ -10,17 +11,17 @@ module.exports = {
         // Init Function
     },
 
-    load() {
-        delete require.cache[join(__dirname, "settings.json")]
-        this.settings = require("./settings.json");
+    async load() {
+        this.settings = await require("./settings.json");
 
         for (const sound in this.settings) {
             if (this.settings[sound] !== undefined && typeof this.settings[sound] == "string" && this.settings[sound] !== "") {
-                const defaultSound = ReGuildedApi.sounds[sound];
+                const defaultSound = clientSounds[sound];
+
                 if (defaultSound !== undefined) {
                     this.defaultSounds[sound] = defaultSound.src;
 
-                    ReGuildedApi.sounds[sound] = new defaultSound.constructor({ ...defaultSound, src: this.settings[sound]});
+                    clientSounds[sound] = new defaultSound.constructor({ ...defaultSound, src: this.settings[sound]});
                     console.log(`Replaced default sound "${sound}" with custom sound "${this.settings[sound]}"`);
                 }
             }
@@ -30,9 +31,9 @@ module.exports = {
     unload() {
         for (const sound in this.defaultSounds) {
             if (this.defaultSounds[sound] !== undefined) {
-                const defaultSound = ReGuildedApi.sounds[sound];
+                const defaultSound = clientSounds[sound];
 
-                ReGuildedApi.sounds[sound] = new defaultSound.constructor({ ...defaultSound, src: this.defaultSounds[sound]});
+                clientSounds[sound] = new defaultSound.constructor({ ...defaultSound, src: this.defaultSounds[sound]});
                 delete this.defaultSounds[sound];
 
                 console.log(`Restored default sound "${sound}"`);
